@@ -23,6 +23,9 @@
             font-family: 'Poppins', sans-serif;
         }
 
+       
+
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -30,22 +33,27 @@
             height: 80px;
             background-color: rgb(33, 33, 117);
             padding: 0 20px;
-            /* Add padding */
+        }
+
+        .navbar-toggler {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
         }
 
         nav ul {
             display: flex;
             justify-content: center;
             margin: 0;
-            /* Reset margin */
             padding: 0;
-            /* Reset padding */
         }
 
         nav ul li {
             list-style: none;
             margin: 0 10px;
-            /* Adjust margin */
         }
 
         nav ul li a {
@@ -58,23 +66,22 @@
         }
 
         @media screen and (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                /* Stack items vertically */
-                height: auto;
-                /* Auto adjust height */
+            .navbar-toggler {
+                display: block;
             }
 
             nav ul {
                 flex-direction: column;
-                /* Stack items vertically */
                 align-items: center;
-                /* Center items horizontally */
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
             }
 
             nav ul li {
                 margin: 10px 0;
-                /* Adjust margin */
             }
         }
 
@@ -297,10 +304,6 @@
         /* Adjusted card width for even smaller screens */
     }
 }
-
-
-
-
         .view-more-btn {
             background-color: #1f77b4;
             /* Button background color */
@@ -324,6 +327,9 @@
             background-color: #145a8b;
             /* Button background color on hover */
         }
+        h2{
+            color: #C13584;
+        }
 
     </style>
 </head>
@@ -331,11 +337,13 @@
 <body>
     <header>
        
-
         <nav>
             <div class="left">
                 Abinash's Portfolio
             </div>
+            <button class="navbar-toggler" onclick="toggleNavbar()">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="right">
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -344,7 +352,7 @@
                     <li><a href="#" onclick="scrollToSkills2()">Projects</a></li>
                 </ul>
             </div>
-        </nav>   
+        </nav>
         
     </header>
     <main>
@@ -432,11 +440,15 @@
                         <div class="fillup" style="width: 75%; text-align: center;">75%</div>
                     </li>
                 </ul>
+                <br>
+                <div class="about-heading" style="text-align: center;">
+                    <button class="view-more-btn">View More</button>
+                </div>
             </div>
         </section>
         <hr>
         <section class="fourthsection" id="Projects">
-            <h1>Projects</h1><br>
+            <h2>Projects</h2><br>
             <div class="card-container">
                 <div class="card">
                     <img src="1.jpg" class="card-img-top" alt="...">
@@ -503,23 +515,10 @@
             skillsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-//         function toggleNav() {
-//     var menu = document.querySelector('.menu');
-//     menu.classList.toggle('active');
-// }
-
-// window.addEventListener('resize', function () {
-//     var menu = document.querySelector('.menu');
-//     var toggleMenu = document.querySelector('.toggle-menu');
-    
-//     if (window.innerWidth <= 768) {
-//         menu.style.display = 'none';
-//         toggleMenu.style.display = 'block';
-//     } else {
-//         menu.style.display = 'flex';
-//         toggleMenu.style.display = 'none';
-//     }
-// });
+        function toggleNavbar() {
+            const navbarUl = document.querySelector("nav ul");
+            navbarUl.classList.toggle("active");
+        } 
 
     </script>
 </body>
